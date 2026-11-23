@@ -80,7 +80,7 @@
         /* 2. Nav Links (Center) */
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 35px;
             list-style: none;
             
             /* Keeps menu perfectly centered */
@@ -92,8 +92,8 @@
         }
 
         .nav-links li a {
-            font-size: 0.95rem;
-            font-weight: 600;
+            font-size: 16px;
+            font-weight: 700;
             color: var(--text-dark);
             transition: color 0.3s ease;
         }
@@ -786,22 +786,19 @@
         .page-content::before {
             content: '';
             position: absolute;
-            top: 0;
-            right: 0; 
-            width: 50%; 
-            height: 100%;
+            top: 80px;                /* match the section's top padding */
+            right: 0;
+            width: 50%;
+            height: 600px;            /* fixed pixel height — NOT 100% */
             background-image: url('nataraja.png');
             background-size: contain;
-            background-position: right center; 
+            background-position: right top;   /* anchor to top, not center */
             background-repeat: no-repeat;
-            
-            opacity: 0.2; /* Adjust to 0.2 or 0.3 if you want it more visible */
-            
-            /* Fades out to the left */
+            opacity: 0.2;
             -webkit-mask-image: linear-gradient(to left, black 40%, transparent 100%);
             mask-image: linear-gradient(to left, black 40%, transparent 100%);
-            
             z-index: 0;
+            pointer-events: none;
         }
 
         /* Ensure the text and cards stay above the background image */
@@ -820,28 +817,31 @@
 }
 
 /* Accordion / Service List */
-/* --- TWO-COLUMN SERVICE LIST --- */
-
-/* 1. Turn the list into a 2-column grid */
+/* --- TWO-COLUMN SERVICE LIST (COLUMN LAYOUT) --- */
 .service-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns of equal width */
-    gap: 20px; /* Space between the items */
-    max-width: 1200px; /* Optional: limits width on very large screens */
+    column-count: 2;
+    column-gap: 20px;
+    max-width: 1200px;
     margin: 0 auto;
-    align-items: start; /* Prevents items from stretching to match heights */
 }
 
-/* 2. Style the individual items to look like the cards in your document */
 .service-item {
+    break-inside: avoid;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 20px;
     background-color: #FAFAFA;
     border: 1px solid #eee;
     border-radius: 8px;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* 3. Adjust the header to fit the new layout */
+.service-item.active {
+    box-shadow: 0 8px 24px rgba(10, 28, 58, 0.12);
+    border-color: var(--accent-gold);
+}
+
 .service-header {
     padding: 20px 25px;
     background-color: var(--white);
@@ -852,26 +852,30 @@
     transition: background-color 0.3s ease;
 }
 
-/* 4. Adjust the body for the grid layout */
+.service-header i {
+    transition: transform 0.3s ease;
+}
+
+.service-item.active .service-header i {
+    transform: rotate(180deg);
+}
+
 .service-body {
     padding: 0 25px;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out, padding 0.4s ease;
     background-color: #FAFAFA;
-
 }
 
-/* 5. When active, expand the body */
 .service-item.active .service-body {
     padding: 25px;
-    max-height: 1500px; /* Increased to fit longer content like the Business/Employment list */
+    max-height: 2000px;
 }
 
-/* --- RESPONSIVE: 1 COLUMN ON MOBILE --- */
 @media (max-width: 900px) {
     .service-list {
-        grid-template-columns: 1fr; /* Switch to 1 column on tablets/phones */
+        column-count: 1;
     }
 }
 
