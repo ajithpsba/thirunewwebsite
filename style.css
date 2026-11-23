@@ -775,37 +775,48 @@
 /* Content Sections */
         /* --- SERVICE PAGE BACKGROUND IMAGE --- */
 
-        .page-content {
+.page-content {
             position: relative;
             padding: 80px 0;
             background-color: var(--white);
-            overflow: hidden; /* Prevents image from spilling out */
+            overflow: hidden;
         }
 
-        /* This creates the image on the RIGHT and fades it to the LEFT */
         .page-content::before {
             content: '';
             position: absolute;
-            top: 80px;                /* match the section's top padding */
+            top: 80px;
             right: 0;
             width: 50%;
-            height: 600px;            /* fixed pixel height — NOT 100% */
-            background-image: url('nataraja.png');
+            height: 600px;
             background-size: contain;
-            background-position: right top;   /* anchor to top, not center */
+            background-position: right top;
             background-repeat: no-repeat;
-            opacity: 0.2;
+            opacity: 0.3;
             -webkit-mask-image: linear-gradient(to left, black 40%, transparent 100%);
             mask-image: linear-gradient(to left, black 40%, transparent 100%);
             z-index: 0;
             pointer-events: none;
         }
 
+        /* Per-page images — only the URL changes */
+        .page-content--immigration::before { background-image: url('temp1_darker.jpeg'); }
+        .page-content--business::before    { background-image: url('temp2_darker.jpeg'); }
+        .page-content--estate::before      { background-image: url('temp3_darker.jpeg'); }
+        .page-content--family::before      { background-image: url('temp4_darker.jpeg'); }
+
+        .page-content--general::before      { background-image: url('krish1_darker.jpeg'); }
+        .page-content--about::before      { background-image: url('krish2_darker.jpeg'); }
+        
+
+
         /* Ensure the text and cards stay above the background image */
         .page-content .container {
             position: relative;
             z-index: 1; 
         }
+
+
 
 .content-intro {
     max-width: 1200px;
