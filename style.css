@@ -45,7 +45,8 @@
 
           /* --- NAVIGATION --- */
         header {
-            background-color: var(--primary-light);
+            /* background-color: var(--primary-light); */
+            background-color: #FCF0E4;
             padding: 5px 0;
             position: sticky;
             top: 0;
@@ -57,7 +58,7 @@
             display: flex;
             justify-content: space-between; /* Pushes Logo left, Actions right */
             align-items: center;
-            position: relative;
+            /* position: relative; */
             min-height: 80px;
         }
 
@@ -80,7 +81,7 @@
         /* 2. Nav Links (Center) */
         .nav-links {
             display: flex;
-            gap: 35px;
+            gap: 40px;
             list-style: none;
             
             /* Keeps menu perfectly centered */
@@ -92,7 +93,7 @@
         }
 
         .nav-links li a {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 700;
             color: var(--text-dark);
             transition: color 0.3s ease;
@@ -193,7 +194,7 @@
             
             /* The Background Image */
             /* REPLACE THIS URL WITH YOUR ACTUAL IMAGE PATH */
-           background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');background-image: url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); 
+           background-image: url('home.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -236,7 +237,7 @@
         }
 
         .hero-subtitle {
-            color: #0000FF;
+            color: #2B3A4A;
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 15px;
@@ -749,7 +750,7 @@
 /* Inner Page Hero */
 .inner-hero {
     background-color: var(--primary-light);
-    background-image: linear-gradient(to right, rgba(250, 245, 236, 1) 0%, rgba(250, 245, 236, 0.8) 50%, rgba(250, 245, 236, 0) 100%), url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-image: linear-gradient(to right, rgba(250, 245, 236, 1) 0%, rgba(250, 245, 236, 0.8) 50%, rgba(250, 245, 236, 0) 100%);
     background-size: cover;
     background-position: center right;
     padding: 80px 0;
@@ -765,7 +766,7 @@
 }
 
 .inner-hero .subtitle {
-    color: #0000FF;
+    color: #2B3A4A;
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 25px;
