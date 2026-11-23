@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment | Thiru Legal PLLC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- PAYMENT PAGE SPECIFIC STYLES --- */
+        
+        /* A dark hero specific to the Payment page as shown in the document */
+        .payment-hero {
+            background: linear-gradient(to right, var(--primary-dark) 40%, rgba(10, 28, 58, 0.7)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center right/cover;
+            padding: 100px 0;
+            color: var(--white);
+        }
+
+        .payment-hero h1 {
+            color: var(--white);
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 900;
+        }
+
+        .payment-hero p {
+            color: var(--primary-light);
+            font-size: 1.2rem;
+            max-width: 500px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Payment Options Container */
+        .payment-options-container {
+            max-width: 800px;
+            margin: -40px auto 60px auto; /* Pulls it up slightly over the hero */
+            position: relative;
+            z-index: 10;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .payment-panel {
+            display: flex;
+            align-items: center;
+            background-color: #FAFAFA;
+            border: 1px solid #e0dcd3; /* Subtle gold/brown border */
+            border-radius: 5px;
+            padding: 20px 30px;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: var(--primary-dark);
+            transition: all 0.3s ease;
+        }
+
+        .payment-panel:hover {
+            border-color: var(--accent-gold);
+            background-color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .payment-icon-box {
+            width: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: 2px solid #e0dcd3;
+            padding-right: 20px;
+            margin-right: 25px;
+        }
+
+        .payment-icon-box i {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+        }
+        
+        /* Specific icon colors */
+        .payment-panel:nth-child(2) .payment-icon-box i { color: #6d1ed4; } /* Zelle purple */
+        .payment-panel:nth-child(4) .payment-icon-box i { color: #003087; } /* PayPal blue */
+
+        .payment-panel h2 {
+            font-size: 1.8rem;
+            margin: 0;
+            font-family: var(--font-heading);
+        }
+
+        /* Info Section below panels */
+        .payment-info {
+            max-width: 900px;
+            margin: 0 auto;
+            color: var(--text-dark);
+        }
+
+        .payment-info h3 {
+            font-size: 1.5rem;
+            margin: 35px 0 15px 0;
+            color: var(--primary-dark);
+        }
+
+        .payment-info p, .payment-info ul {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .payment-info ul {
+            padding-left: 20px;
+        }
+
+        .payment-info li {
+            margin-bottom: 10px;
+        }
+
+        .payment-contact-box {
+            background-color: var(--primary-light);
+            padding: 25px;
+            border-left: 4px solid var(--accent-gold);
+            margin-top: 40px;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .payment-contact-box p {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .payment-contact-box a {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .payment-hero h1 { font-size: 2.5rem; }
+            .payment-options-container { padding: 20px; margin-top: 20px; }
+            .payment-panel { flex-direction: column; text-align: center; padding: 20px; }
+            .payment-icon-box { border-right: none; border-bottom: 2px solid #e0dcd3; padding-right: 0; padding-bottom: 15px; margin-right: 0; margin-bottom: 15px; width: 100%; }
+            .payment-panel h2 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="logo.png" alt="Thiru Legal PLLC Logo" class="nav-logo">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#practice-areas">Practice Areas</a></li>
+                <li><a href="general-services.html">General Services</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="payment.html">Payment</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+    </header>
+    <!-- Inner Hero -->
+    <section class="inner-hero">
+        <div class="container-fluid inner-hero-container">
+            <div>
+                <h1>Payment</h1>
+                <p class="subtitle">Follow the payment instructions provided on the invoice or by our office.</p>
+                <a href="index.html#contact" class="cta-btn">Request a Consultation</a>
+            </div>
+        </div>
+    </section>
+    <!-- Payment Hero -->
+    <!-- <section class="payment-hero">
+        <div class="container inner-hero-container">
+            <div>
+                <h1>Payment</h1>
+                <p>Follow the payment instructions provided on the invoice or by our office.</p>
+            </div>
+        </div>
+    </section> -->
+    <br>
+
+
+    <!-- Main Content -->
+    <section class="page-content" style="padding-top: 40px;">
+        <div class="container">
+            
+            <!-- Payment Panels (Instructions: Keep limited to icons and names) -->
+            <div class="payment-options-container">
+                
+                <a href="#" class="payment-panel">
+                    <div class="payment-icon-box"><i class="fas fa-credit-card"></i></div>
+                    <h2>Card or eCheck</h2>
+                </a>
+
+                <a href="#" class="payment-panel">
+                    <div class="payment-icon-box"><i class="fas fa-mobile-screen-button"></i></div>
+                    <h2>Zelle or Venmo</h2>
+                </a>
+
+                <a href="#" class="payment-panel">
+                    <div class="payment-icon-box"><i class="fas fa-building-columns"></i></div>
+                    <h2>Wire Transfer</h2>
+                </a>
+
+                <a href="#" class="payment-panel">
+                    <div class="payment-icon-box"><i class="fab fa-paypal"></i></div>
+                    <h2>PayPal</h2>
+                </a>
+
+            </div>
+
+            <!-- Detailed Explanations & Security Info -->
+            <div class="payment-info">
+                <p>Thiru Legal offers several convenient payment options to accommodate our clients' preferences. Follow the payment instructions provided on your invoice or directly by our office. Each option allows you to make payments through an established payment service or your bank.</p>
+
+                <h3>Payment Methods</h3>
+                <ul>
+                    <li><strong>Card or eCheck:</strong> Pay by credit card, debit card, or eCheck through our designated payment link. An eCheck is an electronic payment drawn directly from your bank account.</li>
+                    <li><strong>Zelle or Venmo:</strong> Zelle and Venmo allow you to send payments electronically using their supported banking or mobile applications. Confirm the recipient details with our office before making your payment.</li>
+                    <li><strong>Wire Transfer:</strong> A wire transfer sends funds directly from your bank to the designated receiving account. Contact our office for wire instructions and verify the account details with us before initiating the transfer.</li>
+                    <li><strong>PayPal:</strong> PayPal allows you to make an electronic payment through your PayPal account or other payment options available through the platform. Use only the payment link or recipient details provided directly by our office.</li>
+                </ul>
+
+                <h3>Payment Security</h3>
+                <p>These payment channels provide security features to help protect transactions. Before paying, verify that you are using the correct payment link and sending funds to the recipient confirmed by our office.</p>
+                <p>Thiru Legal does not authorize third parties to solicit money on our behalf. Although we use payment platforms to process transactions, payment requests and instructions come directly from our office.</p>
+                <p><strong>If you receive an unexpected payment request, different account information, or changed payment instructions, call 832-500-5171 to verify the details before sending funds.</strong></p>
+
+                <h3>Protecting Your Information</h3>
+                <p>Please discuss with our office before sending confidential documents or sensitive personal or financial information. We will explain what information is needed and how to provide it securely. Enter card and banking details directly through the designated payment platform.</p>
+
+                <div class="payment-contact-box">
+                    <p>Payment questions? Contact <a href="tel:8325005171">832-500-5171</a> or <a href="mailto:info@thirulegal.com">info@thirulegal.com</a>.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <a href="index.html" class="footer-logo-link">
+                        <img src="logo.png" alt="Thiru Legal Logo" class="footer-logo-img">
+                    </a>
+                    <p>Providing expert legal guidance in Immigration Law, Business Law, and Estate Planning. Dedicated to protecting your family, assets, and business interests.</p>
+                </div>
+                <div class="footer-col footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#practice-areas">Practice Areas</a></li>
+                        <li><a href="general-services.html">General Services</a></li>
+                        <li><a href="team.html">About Our Team</a></li>
+                        <li><a href="index.html#contact">Request Consultation</a></li>
+                        <li><a href="payment.html">Make a Payment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-contact-info">
+                    <h4>Contact Us</h4>
+                    <div class="footer-contact-row">
+                        <span>Office: 832-500-5171</span><br>
+                        <span>Mobile: 713-732-9433</span><br>
+                        <span>Houston, Texas</span>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Thiru Legal PLLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

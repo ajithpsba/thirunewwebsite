@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About the Firm | Thiru Legal PLLC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- ABOUT PAGE SPECIFIC STYLES --- */
+        
+        .about-intro-highlight {
+            font-family: var(--font-heading);
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 60px auto;
+            line-height: 1.5;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .about-intro-highlight::before,
+        .about-intro-highlight::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--accent-gold);
+            position: absolute;
+            opacity: 0.5;
+        }
+        .about-intro-highlight::before { top: -20px; left: 0; }
+        .about-intro-highlight::after { bottom: -40px; right: 0; }
+
+        /* 4-Box Grid for Core Principles */
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .principle-card {
+            background-color: #FAFAFA;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 40px 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .principle-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .principle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .principle-card:hover::before {
+            width: 100%;
+            opacity: 0.05;
+        }
+
+        .principle-icon {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            display: inline-block;
+            background: var(--primary-light);
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            border-radius: 50%;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .principle-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .principle-card p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        /* Values List styling */
+        .values-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .values-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .values-list li::before {
+            content: '\f00c'; /* FontAwesome Checkmark */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--accent-gold);
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 0.8rem;
+        }
+
+        .values-list strong {
+            color: var(--primary-dark);
+        }
+
+        /* The Process Section */
+        .process-section {
+            background-color: var(--primary-light);
+            padding: 60px 40px;
+            border-radius: 10px;
+            margin-bottom: 60px;
+        }
+
+        .process-section h3 {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-dark);
+        }
+
+        .process-section p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        /* Founder Block */
+        .founder-signature {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #eee;
+        }
+        .founder-signature h4 {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+        .founder-signature p {
+            color: var(--accent-gold);
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Background text block */
+        .firm-background-text {
+            max-width: 900px; 
+            margin: 0 auto 60px auto; 
+            font-size: 1rem; 
+            color: var(--text-gray); 
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .principles-grid { grid-template-columns: 1fr; }
+            .process-section { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="logo.png" alt="Thiru Legal PLLC Logo" class="nav-logo">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#practice-areas">Practice Areas</a></li>
+                <li><a href="general-services.html">General Services</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="payment.html">Payment</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Inner Hero -->
+    <section class="inner-hero">
+        <div class="container-fluid inner-hero-container">
+            <div>
+                <h1>About the Firm</h1>
+                <p class="subtitle">A Houston-based law firm founded by Thiru Sethuraman.</p>
+                <a href="index.html#contact" class="cta-btn">Request a Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="page-content">
+        <div class="container">
+            
+            <!-- Highlighted Quote -->
+            <div class="about-intro-highlight">
+                Thiru Legal began as a U.S. immigration practice and now also advises on business law, corporate governance, and estate planning.
+            </div>
+
+            <!-- Firm Background -->
+            <div class="firm-background-text">
+                <p style="margin-bottom: 20px;">Thiru Legal PLLC is a Houston-based law firm founded by Thiru Sethuraman. We began as a U.S. immigration practice serving individuals, families, workers, and employers. Today, we also advise clients on business law and contracts, corporate governance, and estate planning, including wills and trusts. We serve as outside general counsel for businesses that need ongoing legal advice. We offer mediation and assist with select landlord and tenant, consumer, real property, and other civil and administrative matters.</p>
+                <p>Thiru's background in law, accounting, estate planning and business shapes how we approach each matter. We look at what a legal decision means in practice, whether it affects a family's immigration plans, the day-to-day operations of a business, or the people who will carry out an estate plan.</p>
+            </div>
+
+            <!-- Principles Grid -->
+            <div class="principles-grid">
+                
+                <!-- Mission -->
+                <div class="principle-card">
+                    <div class="principle-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>Our Mission</h3>
+                    <p><strong>Help individuals, families, and businesses make informed legal decisions.</strong></p>
+                    <p>We listen to what you want to accomplish, explain your options in plain language, and help you choose a course of action that fits your circumstances.</p>
+                </div>
+
+                <!-- Vision -->
+                <div class="principle-card">
+                    <div class="principle-icon"><i class="fas fa-eye"></i></div>
+                    <h3>Our Vision</h3>
+                    <p><strong>Build lasting relationships as clients' needs change.</strong></p>
+                    <p>We aim to build lasting relationships with clients who can turn to us as their needs change. We want clients to feel comfortable seeking advice early, whether they are planning a move to the United States, starting or growing a business, or making arrangements for the people who depend on them.</p>
+                </div>
+
+                <!-- Values -->
+                <div class="principle-card">
+                    <div class="principle-icon"><i class="fas fa-gem"></i></div>
+                    <h3>Our Values</h3>
+                    <p style="margin-bottom: 15px;"><strong>Respect, candor, practical judgment, and attention to detail.</strong></p>
+                    <ul class="values-list">
+                        <li><strong>Respect.</strong> We take the time to understand your priorities, your circumstances, and the concerns that brought you to us.</li>
+                        <li><strong>Candor.</strong> We explain the strengths, risks, and uncertainties of your matter so you can weigh your choices.</li>
+                        <li><strong>Practical judgment.</strong> We consider your goals, timing, and costs when recommending a next step.</li>
+                        <li><strong>Attention to detail.</strong> We pay close attention to the facts, documents, and deadlines that can affect your matter.</li>
+                    </ul>
+                </div>
+
+                <!-- Promise -->
+                <div class="principle-card">
+                    <div class="principle-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>Our Promise</h3>
+                    <p><strong>Explain the scope and fees, keep you informed, and walk you through your options.</strong></p>
+                    <p>When you work with Thiru Legal, we'll explain what our work together will cover, how fees will be charged, and what we need from you. We'll keep you informed of important developments and explain what they mean for your matter. When you need to make a decision, we'll walk you through the options and trade-offs so you can decide how to proceed.</p>
+                </div>
+
+            </div>
+
+            <!-- How We Work With You Section -->
+            <div class="process-section">
+                <h3>How We Work With You</h3>
+                <p><strong>We start with your goals, what has happened, and any upcoming deadlines.</strong><br><br>
+                We start by asking what you want to accomplish, what has happened so far, and whether any deadlines are approaching. Depending on the matter, we may ask to review an immigration notice, a business agreement, or an existing will or trust. From there, we discuss the immediate decisions you face and whether we can help with a specific task or provide ongoing legal support.</p>
+            </div>
+
+            <!-- Founder Signature -->
+            <div class="founder-signature">
+                <h4>Thiru Sethuraman, JD, MBA, MS, CPA</h4>
+                <p>Founder and Managing Attorney</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <a href="index.html" class="footer-logo-link">
+                        <img src="logo.png" alt="Thiru Legal Logo" class="footer-logo-img">
+                    </a>
+                    <p>Providing expert legal guidance in Immigration Law, Business Law, and Estate Planning. Dedicated to protecting your family, assets, and business interests.</p>
+                </div>
+                <div class="footer-col footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#practice-areas">Practice Areas</a></li>
+                        <li><a href="general-services.html">General Services</a></li>
+                        <li><a href="team.html">About Our Team</a></li>
+                        <li><a href="index.html#contact">Request Consultation</a></li>
+                        <li><a href="payment.html">Make a Payment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-contact-info">
+                    <h4>Contact Us</h4>
+                    <div class="footer-contact-row">
+                        <span>Office: 832-500-5171</span><br>
+                        <span>Mobile: 713-732-9433</span><br>
+                        <span>Houston, Texas</span>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Thiru Legal PLLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

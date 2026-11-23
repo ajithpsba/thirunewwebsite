@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | Thiru Legal PLLC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- TEAM PAGE SPECIFIC STYLES --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+            margin-top: 40px;
+        }
+
+        .team-card {
+            background-color: var(--white);
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .team-img-wrapper {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--accent-gold);
+            background-color: #f0f0f0; /* Placeholder color */
+        }
+
+        .team-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--primary-dark);
+        }
+
+        .team-card .title {
+            font-size: 0.9rem;
+            color: #0000FF; /* Blue subtitle from your design */
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Bio Section */
+        .bio-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .bio-item {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .bio-item:last-child {
+            border-bottom: none;
+        }
+
+        .bio-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .bio-header h3 {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin: 0;
+        }
+
+        .bio-header .role {
+            font-size: 1.1rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .bio-item p {
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        .bio-email {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--primary-dark);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent-gold);
+            padding-bottom: 2px;
+        }
+
+        .bio-email:hover {
+            color: var(--accent-gold);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="logo.png" alt="Thiru Legal PLLC Logo" class="nav-logo">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#practice-areas">Practice Areas</a></li>
+                <li><a href="general-services.html">General Services</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="payment.html">Payment</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Inner Hero -->
+    <section class="inner-hero">
+        <div class="container-fluid inner-hero-container">
+            <div>
+                <h1>Our Team</h1>
+                <p class="subtitle">Meet the attorneys and staff at Thiru Legal PLLC.</p>
+                <a href="index.html#contact" class="cta-btn">Request a Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="page-content">
+        <div class="container">
+            
+            <!-- Team Cards Grid -->
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <!-- Replace with actual image path -->
+                        <img src="Thiru Sethuraman.png" alt="Thiru Sethuraman">
+                    </div>
+                    <h3>Thiru Sethuraman, JD, MBA, MS, CPA</h3>
+                    <p class="title">Founder and Managing Attorney</p>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <!-- Replace with actual image path -->
+                        <img src="Reggie Fox.png" alt="Reginald Fox">
+                    </div>
+                    <h3>Reginald Fox, JD</h3>
+                    <p class="title">Of Counsel</p>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <!-- Replace with actual image path -->
+                        <img src="Valentina Diaz.png" alt="Valentina Diaz">
+                    </div>
+                    <h3>Valentina Diaz, BBA</h3>
+                    <p class="title">Legal Assistant</p>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <!-- Replace with actual image path -->
+                        <img src="Sara Neelamegam.png" alt="Sarasvathi Neelamegam">
+                    </div>
+                    <h3>Sarasvathi Neelamegam, LLB</h3>
+                    <p class="title">Legal Consultant</p>
+                </div>
+            </div>
+
+            <!-- Detailed Biographies -->
+            <div class="bio-list">
+                
+                <!-- Bio 1 -->
+                <div class="bio-item">
+                    <div class="bio-header">
+                        <h3>Thiru Sethuraman, JD, MBA, MS, CPA</h3>
+                        <span class="role">Founder and Managing Attorney</span>
+                    </div>
+                    <p><em>Admitted in Texas and Indiana</em></p>
+                    <p>Thiru founded Thiru Legal to advise individuals, families, and businesses on decisions that affect where they live, how they operate, and how they plan for the future. His practice includes U.S. immigration, business law and contracts, corporate governance, and estate planning.</p>
+                    <p>In his immigration practice, Thiru assists families with green cards and citizenship, represents clients in Immigration Court, and advises employers, entrepreneurs, and investors on visas and permanent residence. His business immigration work includes intracompany transfers, investor visas, employer sponsorship, PERM labor certification, and Form I-9 compliance.</p>
+                    <p>Thiru's background in corporate compliance, investigations, mergers and acquisitions, and accounting informs his work with business owners. He helps clients evaluate contract terms, document ownership and management decisions, and coordinate business succession with their estate plans.</p>
+                    <p>Thiru earned his JD from Indiana University, an MBA in Finance and Accounting, and an MS in Industrial Technology from Purdue University. He is also a Certified Public Accountant. Originally from Malaysia, Thiru brings firsthand experience of immigrating to the United States to his work with clients navigating that process.</p>
+                    <a href="mailto:thiru.sethuraman@thirulegal.com" class="bio-email">thiru.sethuraman@thirulegal.com</a>
+                </div>
+
+                <!-- Bio 2 -->
+                <div class="bio-item">
+                    <div class="bio-header">
+                        <h3>Reginald Fox, JD</h3>
+                        <span class="role">Of Counsel</span>
+                    </div>
+                    <p><em>Admitted in Texas</em></p>
+                    <!-- Note: Document did not provide a detailed bio for Reginald, so this is a placeholder -->
+                    <p>Reginald Fox serves as Of Counsel to Thiru Legal PLLC, bringing extensive experience to the firm.</p>
+                    <a href="mailto:reginald.fox@thirulegal.com" class="bio-email">reginald.fox@thirulegal.com</a>
+                </div>
+
+                <!-- Bio 3 -->
+                <div class="bio-item">
+                    <div class="bio-header">
+                        <h3>Valentina Diaz, BBA</h3>
+                        <span class="role">Legal Assistant</span>
+                    </div>
+                    <p>Valentina supports client communications, document collection, and case organization. She helps clients understand what information the firm needs and keeps paperwork organized as their matters progress.</p>
+                    <p>Her background includes customer service, bilingual communication, client relations, and team coordination. She brings that experience to helping clients and attorneys stay in touch throughout a matter.</p>
+                    <a href="mailto:valentina.diaz@thirulegal.com" class="bio-email">valentina.diaz@thirulegal.com</a>
+                </div>
+
+                <!-- Bio 4 -->
+                <div class="bio-item">
+                    <div class="bio-header">
+                        <h3>Sarasvathi Neelamegam, LLB</h3>
+                        <span class="role">Legal Consultant</span>
+                    </div>
+                    <p>Sarasvathi supports the firm's attorneys with legal research, drafting, and document review. Her experience includes working in law offices, assisting with briefs and court documents, and serving as a legal editor at Thomson Reuters.</p>
+                    <p>Sarasvathi earned her LLB from the University of London and holds a certificate in Teaching English as a Second Language. Before working in law, she taught English in private and international schools in Malaysia and led the English department at The Learning Hub. That background informs her clear approach to written materials and client communications.</p>
+                    <a href="mailto:sara.neelamegam@thirulegal.com" class="bio-email">sara.neelamegam@thirulegal.com</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <a href="index.html" class="footer-logo-link">
+                        <img src="logo.png" alt="Thiru Legal Logo" class="footer-logo-img">
+                    </a>
+                    <p>Providing expert legal guidance in Immigration Law, Business Law, and Estate Planning. Dedicated to protecting your family, assets, and business interests.</p>
+                </div>
+                <div class="footer-col footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#practice-areas">Practice Areas</a></li>
+                        <li><a href="general-services.html">General Services</a></li>
+                        <li><a href="team.html">About Our Team</a></li>
+                        <li><a href="index.html#contact">Request Consultation</a></li>
+                        <li><a href="index.html#payment">Make a Payment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-contact-info">
+                    <h4>Contact Us</h4>
+                    <div class="footer-contact-row">
+                        <span>Office: 832-500-5171</span><br>
+                        <span>Mobile: 713-732-9433</span><br>
+                        <span>Houston, Texas</span>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Thiru Legal PLLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

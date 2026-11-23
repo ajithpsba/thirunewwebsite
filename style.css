@@ -1,0 +1,891 @@
+
+        /* --- GLOBAL STYLES & VARIABLES --- */
+        :root {
+            --primary-dark: #0A1C3A; /* Navy Blue */
+            --primary-light: #FAF5EC; /* Cream/Off-white */
+            --accent-gold: #D4AF37;
+            --text-dark: #111;
+            --text-gray: #444;
+            --white: #ffffff;
+            --font-heading: 'Merriweather', serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            color: var(--primary-dark);
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+          /* --- NAVIGATION --- */
+        header {
+            background-color: var(--primary-light);
+            padding: 5px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between; /* Pushes Logo left, Actions right */
+            align-items: center;
+            position: relative;
+            min-height: 80px;
+        }
+
+        /* 1. Logo (Left) */
+        .logo-link {
+            display: flex;
+            align-items: center;
+            /* z-index: 10; */
+            flex: 1; /* Ensures logo container takes up space on the left */
+        }
+
+        .nav-logo {
+            height: 75px; 
+            width: auto;
+            object-fit: contain;
+            border-right: 2px solid var(--accent-gold); 
+            padding-right: 25px; 
+        }
+
+        /* 2. Nav Links (Center) */
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            
+            /* Keeps menu perfectly centered */
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* 3. Right Side Actions */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 10;
+            flex: 1; /* Ensures actions container takes up space on the right */
+            justify-content: flex-end; /* Aligns items to the right */
+        }
+
+        /* The new Consultation Button */
+        .nav-cta-btn {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 2px solid var(--primary-dark);
+            transition: all 0.3s ease;
+            white-space: nowrap; /* Prevents text from wrapping */
+        }
+
+        .nav-cta-btn:hover {
+            background-color: transparent;
+            color: var(--primary-dark);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--primary-dark);
+        }
+
+        /* --- RESPONSIVE UPDATES --- */
+        /* Hide the centered links and show mobile menu earlier to prevent crowding */
+        @media (max-width: 1100px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                transform: none;
+                width: 100%;
+                background-color: var(--primary-light);
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                text-align: center;
+                gap: 15px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-actions {
+                flex: none; /* Remove flex sizing on mobile */
+            }
+        }
+
+        @media (max-width: 576px) {
+            /* On very small phones, hide the nav button text or make it smaller */
+            .nav-logo {
+                height: 50px; 
+                border-right: none; 
+                padding-right: 0;
+            }
+            
+            .nav-cta-btn {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+        }
+ /* --- HERO SECTION (UPDATED FOR FULL BACKGROUND) --- */
+        .hero {
+            position: relative;
+            padding: 120px 0; /* Adjust padding as needed */
+            min-height: 600px;
+            /* display: flex;
+            align-items: center; */
+            
+            /* The Background Image */
+            /* REPLACE THIS URL WITH YOUR ACTUAL IMAGE PATH */
+           background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');background-image: url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* The Cream Gradient Overlay */
+        /* This creates the solid cream color on the left that fades out to reveal the image on the right */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, 
+                rgba(250, 245, 236, 1) 0%,    /* Solid cream on the far left */
+                rgba(250, 245, 236, 0.95) 30%, /* Cream fading slightly */
+                rgba(250, 245, 236, 0.4) 60%,  /* Becoming transparent */
+                rgba(250, 245, 236, 0) 100%    /* Fully transparent on the right */
+            );
+            z-index: 1;
+        }
+
+        .hero-container {
+            display: flex;
+            position: relative;
+            z-index: 2; /* Keeps text above the overlay and image */
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 650px; /* Prevents text from covering the faces in the image */
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            color: #0000FF;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .hero-divider {
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+
+        .hero-location {
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            color: var(--text-gray);
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 15px 35px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-dark);
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: transparent;
+            color: var(--primary-dark);
+        }
+
+        /* --- RESPONSIVE UPDATES FOR HERO --- */
+        @media (max-width: 992px) {
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-content { max-width: 80%; }
+            
+            /* Adjust gradient for tablets */
+            .hero::before {
+                background: linear-gradient(to right, 
+                    rgba(250, 245, 236, 1) 0%,    
+                    rgba(250, 245, 236, 0.9) 50%, 
+                    rgba(250, 245, 236, 0.5) 100%
+                );
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 0;
+                min-height: auto;
+            }
+
+            /* On mobile, make the overlay darker vertically so text is readable */
+            .hero::before {
+                background: rgba(250, 245, 236, 0.85); /* Solid overlay for mobile */
+            }
+
+            .hero-container {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-divider { margin: 15px auto; }
+        }
+
+        /* --- HOW WE CAN HELP SECTION --- */
+        .help-section {
+            padding: 80px 0;
+            background-color: var(--white); 
+            text-align: center;
+            position: relative; 
+            overflow: hidden; 
+        }
+
+        /* This creates the image on the RIGHT and fades it to the LEFT */
+        .help-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0; /* Changed from left: 0 to right: 0 */
+            width: 50%; /* Adjust this if you want it wider/narrower */
+            height: 100%;
+            background-image: url('nataraja.png');
+            background-size: contain;
+            background-position: right center; /* Aligns image to the right */
+            background-repeat: no-repeat;
+            
+            opacity: 0.1; /* 60% visibility */
+            
+            /* Reversed the gradient mask: solid on the right, fading to transparent on the left */
+            -webkit-mask-image: linear-gradient(to left, black 40%, transparent 100%);
+            mask-image: linear-gradient(to left, black 40%, transparent 100%);
+            
+            z-index: 0;
+        }
+
+        /* Ensure the text and cards stay above the background image */
+        .help-section .container {
+            position: relative;
+            z-index: 1; 
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .section-divider-img {
+            display: block;
+            width: 300px; 
+            height: auto;
+            margin: 0 auto 50px auto; 
+        }
+
+        .help-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            text-align: left;
+        }
+
+        .help-card {
+            /* Added a slight solid white background to the cards so text pops over the image */
+            background-color: rgba(250, 250, 250, 0.95); 
+            padding: 30px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(2px); /* Optional: blurs the image slightly behind the cards */
+        }
+
+        .help-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .help-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        .help-card p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        /* --- RESPONSIVE DESIGN FOR HELP SECTION --- */
+        @media (max-width: 768px) {
+            .help-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* On mobile, the left-side image will interfere with text. 
+               We move it to the background center and lower opacity */
+            .help-section::before {
+                width: 100%;
+                background-position: center center;
+                opacity: 0.1; /* Very light on mobile */
+                -webkit-mask-image: none; /* Remove the fade on mobile */
+                mask-image: none;
+            }
+            
+            .help-card {
+                background-color: var(--white); /* Solid white on mobile */
+            }
+        }
+
+        /* --- GENERAL SERVICES --- */
+        .general-services {
+            background-color: var(--primary-light);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .general-services p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        /* --- ABOUT THE FIRM --- */
+        .about-firm {
+            padding: 80px 0;
+            background: linear-gradient(to right, #fcf9f2, #faefe0);
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            text-align: left;
+        }
+
+        .about-title {
+            font-size: 2.2rem;
+            flex: 1;
+            text-align: right;
+            border-right: 2px solid var(--accent-gold);
+            padding-right: 40px;
+        }
+
+        .about-info {
+            flex: 1;
+            padding-left: 20px;
+        }
+
+        .about-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .about-info p {
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* --- FOOTER --- */
+                /* --- FOOTER STYLES --- */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 70px 0 20px 0;
+            font-size: 0.95rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr; /* About gets more space */
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        /* Column 1: About */
+        .footer-logo-link {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-img {
+            height: 80px; /* Adjust as needed */
+            width: auto;
+            object-fit: contain;
+            
+            /* INVERTS THE BLACK LOGO TO WHITE FOR DARK BACKGROUND */
+            /* Remove this line if you have a white version of your logo */
+            filter: brightness(0) invert(1); 
+        }
+
+        .footer-about p {
+            color: #b0b8c4; /* Light gray for readability */
+            line-height: 1.7;
+            max-width: 90%;
+        }
+
+        /* Column Headings */
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            font-family: var(--font-heading);
+            position: relative;
+        }
+
+        /* Gold underline for headings */
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent-gold);
+        }
+
+        /* Quick Links */
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a {
+            color: #b0b8c4;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--accent-gold);
+            padding-left: 5px; /* Slight movement on hover */
+        }
+
+        /* Contact Info */
+        .footer-contact-row {
+            color: #b0b8c4;
+            line-height: 2;
+            margin-bottom: 20px;
+        }
+
+        /* Social Media Icons */
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* Footer Bottom Bar */
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #8892a0;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-legal-links a {
+            color: #8892a0;
+            margin: 0 5px;
+        }
+
+        .footer-legal-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* --- FOOTER RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr; /* 2 columns on tablet */
+            }
+            .footer-about {
+                grid-column: 1 / -1; /* About spans full width */
+            }
+            .footer-about p {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr; /* Stack everything on mobile */
+                text-align: center;
+                gap: 30px;
+            }
+
+            .footer-col h4::after {
+                left: 50%;
+                transform: translateX(-50%); /* Center the gold underline */
+            }
+
+            .footer-social {
+                justify-content: center; /* Center social icons */
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            .hero-content h1 { font-size: 2.8rem; }
+            .about-container { flex-direction: column; text-align: center; gap: 20px; }
+            .about-title { text-align: center; border-right: none; border-bottom: 2px solid var(--accent-gold); padding-right: 0; padding-bottom: 15px; }
+            .about-info { padding-left: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-light);
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li { margin: 10px 0; }
+
+            .mobile-menu-btn { display: block; }
+
+            .logo { border-right: none; padding-right: 0; }
+
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-content h1 { font-size: 2.2rem; }
+            
+            .hero-divider { margin: 15px auto; }
+            
+            .hero-image {
+                width: 100%;
+                min-height: 300px;
+            }
+
+            .help-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-contact {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-contact .divider { display: none; }
+        }
+
+        /* Section Titles (How We Can Help, General Services) */
+        .section-divider-img {
+            display: block;
+            width: 250px; /* Slightly wider for the center of the page */
+            height: auto;
+            margin: 0 auto 50px auto; /* Centers it and adds space below */
+            margin-top: -25px;
+        }
+
+
+                /* --- RESPONSIVE TYPOGRAPHY FOR MOBILE --- */
+        @media (max-width: 768px) {
+            /* Scale down the main Hero Heading */
+            .hero-content h1 {
+                font-size: 2.2rem; /* Reduced from 3.5rem */
+            }
+
+            /* Scale down Section Headings (How We Can Help, General Services) */
+            .section-title {
+                font-size: 2rem; /* Reduced from 2.5rem */
+            }
+
+            /* Scale down the About the Firm heading */
+            .about-title {
+                font-size: 1.8rem; /* Reduced from 2.2rem */
+                text-align: center; /* Good to center on mobile */
+            }
+
+            /* Scale down Card Headings */
+            .help-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            /* Ensure the subtitle doesn't look too big either */
+            .hero-subtitle {
+                font-size: 1rem; 
+            }
+        }
+
+        /* Extra Small Devices (Phones) */
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem; /* Even smaller for narrow phones */
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+        }
+
+/* new pages */
+
+/* --- NEW INNER PAGE STYLES --- */
+
+/* Inner Page Hero */
+.inner-hero {
+    background-color: var(--primary-light);
+    background-image: linear-gradient(to right, rgba(250, 245, 236, 1) 0%, rgba(250, 245, 236, 0.8) 50%, rgba(250, 245, 236, 0) 100%), url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center right;
+    padding: 80px 0;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+}
+
+.inner-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    font-weight: 900;
+}
+
+.inner-hero .subtitle {
+    color: #0000FF;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    max-width: 600px;
+}
+
+/* Content Sections */
+        /* --- SERVICE PAGE BACKGROUND IMAGE --- */
+
+        .page-content {
+            position: relative;
+            padding: 80px 0;
+            background-color: var(--white);
+            overflow: hidden; /* Prevents image from spilling out */
+        }
+
+        /* This creates the image on the RIGHT and fades it to the LEFT */
+        .page-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0; 
+            width: 50%; 
+            height: 100%;
+            background-image: url('nataraja.png');
+            background-size: contain;
+            background-position: right center; 
+            background-repeat: no-repeat;
+            
+            opacity: 0.2; /* Adjust to 0.2 or 0.3 if you want it more visible */
+            
+            /* Fades out to the left */
+            -webkit-mask-image: linear-gradient(to left, black 40%, transparent 100%);
+            mask-image: linear-gradient(to left, black 40%, transparent 100%);
+            
+            z-index: 0;
+        }
+
+        /* Ensure the text and cards stay above the background image */
+        .page-content .container {
+            position: relative;
+            z-index: 1; 
+        }
+
+.content-intro {
+    max-width: 1200px;
+    margin: 0 auto 60px auto;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+    text-align: center;
+}
+
+/* Accordion / Service List */
+/* --- TWO-COLUMN SERVICE LIST --- */
+
+/* 1. Turn the list into a 2-column grid */
+.service-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns of equal width */
+    gap: 20px; /* Space between the items */
+    max-width: 1200px; /* Optional: limits width on very large screens */
+    margin: 0 auto;
+    align-items: start; /* Prevents items from stretching to match heights */
+}
+
+/* 2. Style the individual items to look like the cards in your document */
+.service-item {
+    background-color: #FAFAFA;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* 3. Adjust the header to fit the new layout */
+.service-header {
+    padding: 20px 25px;
+    background-color: var(--white);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+/* 4. Adjust the body for the grid layout */
+.service-body {
+    padding: 0 25px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease;
+    background-color: #FAFAFA;
+
+}
+
+/* 5. When active, expand the body */
+.service-item.active .service-body {
+    padding: 25px;
+    max-height: 1500px; /* Increased to fit longer content like the Business/Employment list */
+}
+
+/* --- RESPONSIVE: 1 COLUMN ON MOBILE --- */
+@media (max-width: 900px) {
+    .service-list {
+        grid-template-columns: 1fr; /* Switch to 1 column on tablets/phones */
+    }
+}
+
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .inner-hero { padding: 60px 0; text-align: center; }
+    .inner-hero h1 { font-size: 2.2rem; }
+    .inner-hero .subtitle { margin: 0 auto 20px auto; }
+    .service-header { padding: 20px; }
+    .service-header h3 { font-size: 1.1rem; }
+    .service-item.active .service-body { padding: 20px; }
+}
+
+.inner-hero-container{
+    padding: 0 30px;
+}
