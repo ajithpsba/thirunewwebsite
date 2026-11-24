@@ -103,7 +103,7 @@
             color: var(--accent-gold);
         }
 
-        /* 3. Right Side Actions */
+        /* 3. Right Side Actions btn */
         .nav-actions {
             display: flex;
             align-items: center;
