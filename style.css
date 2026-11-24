@@ -807,7 +807,9 @@
         .page-content--family::before      { background-image: url('temp4_darker.png'); }
         .page-content--general::before      { background-image: url('temp5_darker.png'); }
         .page-content--about::before      { background-image: url('temp6_darker.png'); }
-         .page-content--team::before      { background-image: url('temp7_darker.png'); }
+        .page-content--team::before      { background-image: url('temp7_darker.png'); }
+        .page-content--payment::before      { background-image: url('temp8_darker.png'); }  
+        
         
 
 

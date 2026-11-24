@@ -27,6 +27,9 @@
             text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.03);
             transition: transform 0.3s ease;
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
         }
 
         .team-card:hover {
@@ -41,7 +44,7 @@
             border-radius: 50%;
             overflow: hidden;
             border: 3px solid var(--accent-gold);
-            background-color: #f0f0f0; /* Placeholder color */
+            background-color: #f0f0f0;
         }
 
         .team-img-wrapper img {
@@ -58,7 +61,7 @@
 
         .team-card .title {
             font-size: 0.9rem;
-            color: #2B3A4A; /* Blue subtitle from your design */
+            color: #2B3A4A;
             font-weight: 600;
             margin-bottom: 15px;
             text-transform: uppercase;
@@ -72,9 +75,21 @@
         }
 
         .bio-item {
+            display: none; /* hide all bios by default */
             margin-bottom: 40px;
             padding-bottom: 30px;
             border-bottom: 1px solid #eee;
+            scroll-margin-top: 100px; /* offset for sticky header when scrolling */
+        }
+
+        .bio-item.active {
+            display: block; /* show only the active bio */
+            animation: fadeIn 0.35s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         .bio-item:last-child {
@@ -121,9 +136,10 @@
         .bio-email:hover {
             color: var(--accent-gold);
         }
-          .inner-hero {
-    background-image: linear-gradient(to right, rgba(250, 245, 236, 1) 0%, rgba(250, 245, 236, 0.8) 50%, rgba(250, 245, 236, 0) 100%), url('team.jpg');
-    }
+
+        .inner-hero {
+            background-image: linear-gradient(to right, rgba(250, 245, 236, 1) 0%, rgba(250, 245, 236, 0.8) 50%, rgba(250, 245, 236, 0) 100%), url('team.jpg');
+        }
     </style>
 </head>
 <body>
@@ -153,7 +169,6 @@
             <div>
                 <h1>Our Team</h1>
                 <p class="subtitle">Meet the attorneys and staff at Thiru Legal PLLC.</p>
-                <!-- <a href="index.html#contact" class="cta-btn">Request a Consultation</a> -->
             </div>
         </div>
     </section>
@@ -161,7 +176,7 @@
     <!-- Main Content -->
     <section class="page-content page-content--team">
         <div class="container">
-            
+
             <!-- Team Cards Grid -->
             <div class="team-grid">
                 <!-- Team Member 1 -->
@@ -203,8 +218,8 @@
 
             <!-- Detailed Biographies -->
             <div class="bio-list">
-                <!-- Bio 1 -->
-                <div class="bio-item" id="thiru">
+                <!-- Bio 1 — active by default -->
+                <div class="bio-item active" id="thiru">
                     <div class="bio-header">
                         <h3>Thiru Sethuraman, JD, MBA, MS, CPA</h3>
                         <span class="role">Founder and Managing Attorney</span>
@@ -224,7 +239,6 @@
                         <span class="role">Of Counsel</span>
                     </div>
                     <p><em>Admitted in Texas</em></p>
-                    <!-- Note: Document did not provide a detailed bio for Reginald, so this is a placeholder -->
                     <p>Reginald Fox serves as Of Counsel to Thiru Legal PLLC, bringing extensive experience to the firm.</p>
                     <a href="mailto:reginald.fox@thirulegal.com" class="bio-email">reginald.fox@thirulegal.com</a>
                 </div>
@@ -256,14 +270,13 @@
     </section>
 
     <!-- Footer -->
-         <footer id="contact">
+    <footer id="contact">
         <div class="container">
             <div class="footer-grid">
-                
+
                 <!-- Column 1: Logo & About -->
                 <div class="footer-col footer-about">
                     <a href="#" class="footer-logo-link">
-                        <!-- Added CSS filter to make the black logo white for the dark footer -->
                         <img src="logosmall.png" alt="Thiru Legal Logo" class="footer-logo-img">
                     </a>
                     <p>Providing expert legal guidance in Immigration Law, Business Law, and Estate Planning. Dedicated to protecting your family, assets, and business interests.</p>
@@ -290,7 +303,7 @@
                         <span>Mobile: 713-732-9433</span><br>
                         <span>Houston, Texas</span>
                     </div>
-                    
+
                     <div class="footer-social">
                         <a href="https://www.facebook.com/61580748410083/" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.linkedin.com/company/thiru-legal/" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
@@ -316,6 +329,37 @@
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
         }
+
+        // Show only the selected team member's bio
+        document.querySelectorAll('.team-card').forEach(function(card) {
+            card.addEventListener('click', function(e) {
+                e.preventDefault();
+                var targetId = this.getAttribute('href').replace('#', '');
+                var targetBio = document.getElementById(targetId);
+                if (!targetBio) return;
+
+                document.querySelectorAll('.bio-item').forEach(function(bio) {
+                    bio.classList.remove('active');
+                });
+                targetBio.classList.add('active');
+
+                targetBio.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // If the page is loaded with a hash (e.g. team.html#sara), show that bio
+        window.addEventListener('DOMContentLoaded', function() {
+            var hash = window.location.hash.replace('#', '');
+            if (hash) {
+                var bio = document.getElementById(hash);
+                if (bio && bio.classList.contains('bio-item')) {
+                    document.querySelectorAll('.bio-item').forEach(function(b) {
+                        b.classList.remove('active');
+                    });
+                    bio.classList.add('active');
+                }
+            }
+        });
     </script>
 </body>
 </html>
