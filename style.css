@@ -497,7 +497,7 @@
             
             /* INVERTS THE BLACK LOGO TO WHITE FOR DARK BACKGROUND */
             /* Remove this line if you have a white version of your logo */
-            filter: brightness(0) invert(1); 
+            /* filter: brightness(0) invert(1);  */
         }
 
         .footer-about p {
