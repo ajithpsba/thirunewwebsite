@@ -82,7 +82,7 @@
         }
 
         .platform-badge {
-            background-color: var(--primary-light);
+            background-color: #ffff;
             border: 1px solid #e0dcd3;
             padding: 8px 15px;
             border-radius: 5px;
@@ -162,6 +162,41 @@
             color: var(--primary-dark);
         }
 
+        /* 1. Radio Button Layout */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+/* 2. Radio Label Override */
+/* We use !important to override the .form-group label display:block and margin */
+.radio-label {
+    display: flex !important;
+    align-items: center;
+    font-weight: 400 !important; 
+    font-size: 1rem !important;
+    margin-bottom: 0 !important;
+    cursor: pointer;
+    color: #333;
+}
+
+.radio-label input[type="radio"] {
+    width: auto; /* Prevents the width:100% from your generic input rule */
+    margin-right: 10px;
+    accent-color: var(--accent-gold); /* Makes the radio dot match your gold theme */
+    cursor: pointer;
+}
+
+/* 3. Intro paragraph styling (Optional, but matches your image) */
+.form-intro p {
+    margin-bottom: 25px;
+    color: var(--primary-dark);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
         /* Map Section */
         .map-section {
             margin-top: 40px;
@@ -199,8 +234,8 @@
             }
         }
         .platform-logo {
-            width: 18px;
-            height: 18px;
+            width: 30px;
+            height: 30px;
             object-fit: contain;
             display: inline-block;
             vertical-align: middle;
@@ -256,7 +291,8 @@
                         <h2>Visit Our Office</h2>
                         <h3><i class="fas fa-map-marker-alt"></i> Address</h3>
                         <p>
-                            7676 Hillmont Street, Suite 140<br>
+                            7676 Hillmont Street Suite 140,
+                            <br> Houston, Texas, 77040
                             <!-- Houston, Texas 77040 -->
                         </p>
                     </div>
@@ -278,7 +314,10 @@
                     <span class="platform-badge"><img src="download.png" alt="Microsoft Teams" class="platform-logo"> Microsoft Teams</span>
                     <span class="platform-badge"><img src="zoom.png" alt="Zoom" class="platform-logo"> Zoom</span>
                     <span class="platform-badge"><img src="gmeet.png" alt="Google Meet" class="platform-logo"> Google Meet</span>
-                    <span class="platform-badge"><img src="webex.jfif" alt="Cisco Webex" class="platform-logo"> Cisco Webex</span>
+                    <span class="platform-badge"><img src="meeting.png" alt="Cisco Webex" class="platform-logo"> person meeting</span>
+                    <span class="platform-badge"><img src="whatsapp.jfif" alt="WhatsApp" class="platform-logo"> WhatsApp</span>
+                    <span class="platform-badge"><img src="phonecall.png" alt="Phone" class="platform-logo"> Phone</span>
+
                     </div>
 
                 </div>
@@ -286,37 +325,61 @@
                 <!-- Right Column: Contact Form -->
                 <div class="contact-form-section">
                     <h2>Request a Consultation</h2>
-                    <form action="#" method="POST">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required placeholder="John Doe">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required placeholder="john@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555">
-                        </div>
-                        <div class="form-group">
-                            <label for="service">How can we help?</label>
-                            <select id="service" name="service">
-                                <option value="">Select a Practice Area...</option>
-                                <option value="immigration">U.S. Immigration Law</option>
-                                <option value="business">Business Law & Contracts</option>
-                                <option value="corporate">Corporate Governance</option>
-                                <option value="estate">Estate Planning</option>
-                                <option value="general">General Services</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Briefly describe your matter</label>
-                            <textarea id="message" name="message" required placeholder="Please provide a brief summary..."></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Submit Request</button>
-                    </form>
+                      <form action="#" method="POST">
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label>Would you like us to call you back?</label>
+            <div class="radio-group">
+                <label class="radio-label">
+                    <input type="radio" name="callback" value="yes" id="callback-yes">
+                    Yes, please call me
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="callback" value="no" id="callback-no">
+                    No, please follow up by email
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number (required for a callback)</label>
+            <input type="tel" id="phone" name="phone" placeholder="Example: 832-500-5171">
+        </div>
+
+        <div class="form-group">
+            <label for="service">What can we help you with?</label>
+            <select id="service" name="service">
+                <option value="">Select a service</option>
+                <option value="immigration">U.S. Immigration Law</option>
+                <option value="business">Business Law & Contracts</option>
+                <option value="corporate">Corporate Governance</option>
+                <option value="estate">Estate Planning</option>
+                <option value="general">General Services</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Briefly describe your issue</label>
+            <textarea id="message" name="message" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="datetime">Propose a Date or Time (Optional)</label>
+            <input type="text" id="datetime" name="datetime" placeholder="Example: Tuesday after 2 p.m. Central Time">
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Consultation Request</button>
+    </form>
                 </div>
 
             </div>
@@ -354,12 +417,11 @@
                 <div class="footer-col footer-links">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="about.html">About us</a></li>
                         <li><a href="index.html#practice-areas">Practice Areas</a></li>
                         <li><a href="general-services.html">General Services</a></li>
-                        <li><a href="team.html">About Our Team</a></li>
-                        <li><a href="contact.html">Request Consultation</a></li>
-                        <li><a href="payment.html">Make a Payment</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="payment.html">Payment</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
 
@@ -376,8 +438,11 @@
                     <div class="footer-social">
                         <a href="https://www.facebook.com/61580748410083/" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.linkedin.com/company/thiru-legal/" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <!--  <a href="#" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a> -->
+                        <!-- <a href="#" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a> -->
                         <a href="https://www.instagram.com/thirulegal?dmpr=aTg2dDdycHlybzVy" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@thirulegal" aria-label="TikTok" target="_blank">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -387,7 +452,7 @@
             <div class="footer-bottom">
                 <p>&copy; 2027 Thiru Legal PLLC. All rights reserved.</p>
                 <p class="footer-legal-links">
-                    <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                    <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a>
                 </p>
             </div>
         </div>

@@ -38,15 +38,15 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
           /* --- NAVIGATION --- */
+              /* ----- header (original) ----- */
         header {
-            /* background-color: var(--primary-light); */
-            background-color: #FCF0E4;
+            background-color: #FCF0E4;          /* var(--primary-light) */
             padding: 5px 0;
             position: sticky;
             top: 0;
@@ -54,94 +54,102 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        .nav-container {
-            display: flex;
-            justify-content: space-between; /* Pushes Logo left, Actions right */
-            align-items: center;
-            /* position: relative; */
-            min-height: 80px;
+        .container {
+            max-width: 1400px;    /* gives comfortable breathing room */
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
         }
 
-        /* 1. Logo (Left) */
+        /* ----- nav container – flex row, logo left, everything else right ----- */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;   /* logo left, actions right */
+            align-items: center;
+            min-height: 80px;
+            position: relative;               /* for mobile dropdown positioning */
+        }
+
+        /* ----- 1. logo (left) ----- */
         .logo-link {
             display: flex;
             align-items: center;
-            /* z-index: 10; */
-            flex: 1; /* Ensures logo container takes up space on the left */
+            flex: 0 0 auto;                  /* logo keeps natural width */
+            /* no flex:1 – we want it compact */
         }
 
         .nav-logo {
-            height: 75px; 
+            height: 75px;
             width: auto;
             object-fit: contain;
-            border-right: 2px solid var(--accent-gold); 
-            padding-right: 25px; 
+            border-right: 3px solid var(--accent-gold);
+            padding-right: 10px;
+            display: block;
         }
 
-        /* 2. Nav Links (Center) */
+        /* ----- 2. nav links – take ALL remaining space, centered ----- */
         .nav-links {
             display: flex;
             gap: 40px;
             list-style: none;
-            
-            /* Keeps menu perfectly centered */
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
             margin: 0;
             padding: 0;
+
+            /* 🔥 KEY: fill the rest of the container after logo */
+            flex: 1 1 auto;
+            justify-content: center;          /* center the items within the remaining space */
+            align-items: center;
+            /* no absolute positioning – stays in flow */
         }
 
         .nav-links li a {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
             color: var(--text-dark);
             transition: color 0.3s ease;
+            text-decoration: none;
+            white-space: nowrap;
         }
 
         .nav-links li a:hover {
             color: var(--accent-gold);
         }
 
-        /* 3. Right Side Actions btn */
+        /* ----- 3. right side actions (empty / button) ----- */
         .nav-actions {
             display: flex;
             align-items: center;
             gap: 15px;
-            z-index: 10;
-            flex: 1; /* Ensures actions container takes up space on the right */
-            justify-content: flex-end; /* Aligns items to the right */
+            flex: 0 0 auto;                  /* no stretch, just content width */
+            justify-content: flex-end;
         }
 
-        /* The new Consultation Button */
+        /* optional CTA button – hidden in your snippet but we keep style */
         .nav-cta-btn {
-            background-color: var(--primary-dark);
-            color: var(--white);
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 0.9rem;
+            background: var(--accent-gold);
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 30px;
             font-weight: 600;
-            border: 2px solid var(--primary-dark);
-            transition: all 0.3s ease;
-            white-space: nowrap; /* Prevents text from wrapping */
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: background 0.2s;
         }
-
         .nav-cta-btn:hover {
-            background-color: transparent;
-            color: var(--primary-dark);
+            background: #b38f42;
         }
 
         .mobile-menu-btn {
             display: none;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
             background: none;
             border: none;
             color: var(--primary-dark);
+            line-height: 1;
         }
 
-        /* --- RESPONSIVE UPDATES --- */
-        /* Hide the centered links and show mobile menu earlier to prevent crowding */
+        /* ----- responsive ----- */
         @media (max-width: 1100px) {
             .nav-links {
                 display: none;
@@ -149,13 +157,14 @@
                 position: absolute;
                 top: 100%;
                 left: 0;
-                transform: none;
                 width: 100%;
                 background-color: var(--primary-light);
                 padding: 20px 0;
                 box-shadow: 0 5px 10px rgba(0,0,0,0.1);
                 text-align: center;
                 gap: 15px;
+                flex: none;                 /* reset flex inside mobile */
+                justify-content: flex-start;
             }
 
             .nav-links.active {
@@ -165,23 +174,32 @@
             .mobile-menu-btn {
                 display: block;
             }
-            
+
             .nav-actions {
-                flex: none; /* Remove flex sizing on mobile */
+                flex: 0 0 auto;
+            }
+
+            /* on mobile the logo border can stay, but we adjust spacing */
+            .nav-logo {
+                border-right: 2px solid var(--accent-gold);
+                padding-right: 15px;
             }
         }
 
         @media (max-width: 576px) {
-            /* On very small phones, hide the nav button text or make it smaller */
             .nav-logo {
-                height: 50px; 
-                border-right: none; 
+                height: 50px;
+                border-right: none;        /* cleaner on tiny screens */
                 padding-right: 0;
             }
-            
+
             .nav-cta-btn {
                 padding: 8px 12px;
                 font-size: 0.8rem;
+            }
+
+            .nav-container {
+                min-height: 65px;
             }
         }
  /* --- HERO SECTION (UPDATED FOR FULL BACKGROUND) --- */
